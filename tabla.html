@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/tabla.css">
+    <link rel="stylesheet" href="css/cliente.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <title>Tabla Clientes</title>
+</head>
+<body>
+
+    <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+    <a class="formbold-btn" onclick="refrescar();">Actualizar Tabla</a>
+    <table id="tabla">
+        <thead>
+          <tr>
+            <th colspan="8">Clientes</th>
+          </tr>
+          <tr>
+            <th>#</th>
+            <th>&nbsp;&nbsp;Nombre</th>
+            <th>&nbsp;&nbsp;&nbsp;Apellido</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direccion</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email</th>
+            <th>&nbsp;&nbsp;Telefono</th>
+            <th>&nbsp;&nbsp;Acciones&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      
+      <a href="cliente.html" class="formbold-btn">
+        Regresar
+      </a>
+
+      <a href="producto.html" class="formbold-btn" id="btnAgregarProducto">
+        Agregar Producto
+      </a>
+
+      </div>
+      </div>
+
+
+      <div id="cliente">
+      <div class="formbold-main-wrapper">
+        <div class="formbold-form-wrapper">
+          
+          <img  class="logo" src="img/LogoCotizador.png">
+      
+          <form>
+            <div class="formbold-form-title">
+              <h2 class="">Modificar Cliente</h2>
+              <p>
+                Modifica el cliente que requiere cotizar los equipos para gimnasio.
+              </p>
+            </div>
+      
+            <div class="formbold-input-flex">
+              <div>
+                <label for="nombre" class="formbold-form-label">
+                  Nombre
+                </label>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                  class="formbold-form-input"
+                />
+              </div>
+              <div>
+                <label for="apellido" class="formbold-form-label"> Apellido </label>
+                <input
+                  type="text"
+                  name="apellido"
+                  id="apellido"
+                  class="formbold-form-input"
+                />
+              </div>
+            </div>
+      
+            <div class="formbold-input-flex">
+              <div>
+                <label for="email" class="formbold-form-label"> Email </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="formbold-form-input"
+                />
+              </div>
+              <div>
+                <label for="telefono" class="formbold-form-label"> Telefono</label>
+                <input
+                  type="text"
+                  name="telefono"
+                  id="telefono"
+                  class="formbold-form-input"
+                />
+              </div>
+            </div>
+      
+            <div class="formbold-mb-3">
+              <label for="direccion" class="formbold-form-label">
+                Direccion
+              </label>
+              <input
+                type="text"
+                name="direccion"
+                id="direccion"
+                class="formbold-form-input"
+              />
+            </div>
+      
+            <button id="btnModificar" class="formbold-btn">Modificar Cliente</button>
+          </form>
+        </div>
+      </div>
+    </div>
+      <script src="js/tabla.js"></script>
+</body>
+</html>
