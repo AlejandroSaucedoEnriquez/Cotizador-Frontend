@@ -126,7 +126,7 @@ body {
   border-radius: 3px;
 }
 
-.formbold-btn {
+.btn-primary {
   font-size: 16px;
   border-radius: 5px;
   padding: 14px 25px;
@@ -139,6 +139,7 @@ body {
   margin-right: 50px;
   text-decoration: none;
 }
+
 .formbold-btn:hover {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
@@ -150,4 +151,8 @@ img.logo{
 
 #cliente{
   visibility: hidden;
+}
+
+.esp{
+  margin-top: 10%;
 }

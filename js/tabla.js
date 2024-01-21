@@ -1,7 +1,4 @@
 window.onload = function () {
-    setTimeout(() => {
-
-    }, 2000);
     listarClientes();
 }
 
@@ -91,6 +88,7 @@ let editarCliente = async (id) => {
 
 btnModificar.addEventListener("click", evento => {
     aplicarActualizacion(idEditar);
+let cliente = document.getElementById("cliente").style.visibility = "hidden";
 })
 
 let aplicarActualizacion = async (id) => {
