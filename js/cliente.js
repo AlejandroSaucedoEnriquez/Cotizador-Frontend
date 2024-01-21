@@ -1,4 +1,3 @@
-
 let boton = document.getElementById("btnRegistrar");
 
 boton.addEventListener("click", evento=>{
