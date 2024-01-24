@@ -18,54 +18,76 @@
 
 
   <div class="w-50 float-end my-4 mx-4">
-    <form class="row g-3 needs-validation" method="POST" novalidate>
-      <div class="formbold-form-title">
-        <h2 class="">Registrar Cliente</h2>
-        <p>
-          Registra el cliente que requiere cotizar los equipos para gimnasio.
+    <div class="formbold-form-title">
+      <h2 class="">Registrar Cliente</h2>
+      <p>
+        Registra el cliente que requiere cotizar los equipos para gimnasio.
+      </p>
+    </div>
+    <form id="formulario" class="row g-3 formulario" method="POST" novalidate>
+
+      <div class="col-md-6 formulario_cambiar" id="cambiar_nombre">
+        <label for="nombre" class="form-label formulario_label">Nombre</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="nombre" placeholder="Alex" name="nombre" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div> 
+        <p class="formulario_input-error">
+          El nombre debe llevar solo letras minimo 3 caracteres, maximo 40
         </p>
       </div>
-      <div class="col-md-6">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" placeholder="Alex" required>
-        <div class="valid-feedback">
-          Alex
-        </div>
+      <div class="col-md-6 formulario_cambiar" id="cambiar_apellido">
+        <label for="apellido" class="form-label formulario_label">Apellido</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="apellido" placeholder="Bibriesca" name="apellido" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
       </div>
-      <div class="col-md-6">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="apellido" placeholder="Bibriesca" required>
-        <div class="valid-feedback">
-          Bibriesca
-        </div>
+        <p class="formulario_input-error">
+          El apellido debe llevar solo letras minimo 3 caracteres, maximo 40
+        </p>
       </div>
-      <div class="col-md-6">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="alexb@gmail.com" required>
-        <div class="valid-feedback">
-          alexb@gmail.com
-        </div>
+      <div class="col-md-6 formulario_cambiar" id="cambiar_email">
+        <label for="email" class="form-label formulario_label">Email</label>
+        <div class="formulario_cambiar-input">
+        <input type="email" class="form-control formulario_input" id="email" placeholder="alexb@gmail.com" name="email" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
       </div>
-      <div class="col-md-6">
-        <label for="telefono" class="form-label">Telefono</label>
-        <input type="text" class="form-control" id="telefono" placeholder="3332110003" required>
-        <div class="valid-feedback">
-          3332110003
-        </div>
+        <p class="formulario_input-error">
+          El email debe llevar un @  y terminacion como ejemplo@gmail.com
+        </p>
       </div>
-      <div class="col-md-12 my-4">
-        <label for="direccion" class="form-label">Direccion</label>
-        <input type="text" class="form-control" id="direccion" placeholder="Santiago #1547" required>
-        <div class="valid-feedback">
-          Santiago #1547
-        </div>
+      <div class="col-md-6 formulario_cambiar" id="cambiar_telefono">
+        <label for="telefono" class="form-label formulario_label">Telefono</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="telefono" placeholder="3332110003" name="telefono" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div>
+        <p class="formulario_input-error">
+          El telefono debe ser de 10 digitos se aceptan solo numeros
+        </p>
+      </div>
+      <div class="col-md-12 my-4 formulario_cambiar" id="cambiar_direccion">
+        <label for="direccion" class="form-label formulario_label">Direccion</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="direccion" placeholder="Santiago #1547" name="direccion" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div>
+        <p class="formulario_input-error">
+          La direccion debe llevar Calle|Avenida|Privada espacio luego el nombre, espacio y despues #numero
+        </p>
       </div>
 
-      <div class="col-12 my-4">
-        <a href="tabla.html" id="btnRegistrar" class="btn btn-primary">
+      <div class="formulario_mensaje" id="formulario_mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+      <div class="col-12 my-4 formulario_cambiar formulario_cambiar-btn-enviar">
+        <button  id="btnRegistrar" class="btn btn-primary formulario_btn" type="submit">
           Registrar Cliente
-        </a>
-        <a href="tabla.html" class="btn btn-primary" >
+        </button>
+        <p class="formulario_mensaje-exito" id="formulario_mensaje-exito">Formulario enviado exitosamente</p>
+
+        <a href="tabla.html" class="btn btn-primary formulario_btn" >
           Ver tabla de clientes
         </a>
       </div>
@@ -75,6 +97,7 @@
   </div>
 </div>
     <script src="js/cliente.js?v=0.1"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
