@@ -1,7 +1,44 @@
-window.onload = function () {
-    listarClientes();
+let dataTable;
+let dataTableIsInitialized = false;
+
+const initDataTable = async() =>{
+   if(dataTableIsInitialized){
+      dataTable.destroy();
+   }
+
+   await listarClientes();
+
+   dataTable=$("#tabla").DataTable({
+    lengthMenu: [3,5,10,25,50,100,200,500],
+    width: "50%", targets:[0],
+            pageLength: 3,
+            destroy: true,
+			"language":{
+				"lengthMenu": "Mostrar _MENU_ registros por pagina",
+				"info": "Mostrando pagina _PAGE_ de _PAGES_",
+				"infoEmpty": "No hay registros disponibles",
+				"infoFiltered": "(filtrada de _MAX_ registros)",
+				"loadingRecords": "Cargando...",
+				"processing":     "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords":    "No se encontraron registros coincidentes",
+				"paginate": {
+					"next":       "Siguiente",
+					"previous":   "Anterior"
+				},					
+			}
+		});	
+   dataTableIsInitialized = true;
 }
 
+
+
+
+
+window.addEventListener("load", async () =>{
+    await initDataTable();
+})
+   
 function refrescar() {
     location.reload();
 }
@@ -21,7 +58,8 @@ let listarClientes = async () => {
     let contenidoTabla = "";
 
     for (let cliente of clientes) {
-        let contenidoFila = `<tr>
+        let contenidoFila = `
+    <tr>
     <td>${cliente.id}</td>
     <td>${cliente.nombre}</td>
     <td>${cliente.apellido}</td>
@@ -39,7 +77,7 @@ let listarClientes = async () => {
         contenidoTabla += contenidoFila;
     }
 
-    document.querySelector("#tabla tbody").outerHTML = contenidoTabla;
+    tabla_clientes.outerHTML = contenidoTabla;
 }
 
 let borrarCliente = async (id) => {
@@ -117,7 +155,4 @@ function mostrarCliente() {
     let cliente = document.getElementById("cliente").style.visibility = "visible";
 }
 
-
-
-
-
+   

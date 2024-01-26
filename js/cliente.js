@@ -35,7 +35,7 @@ const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
     apellido: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    direccion: /^(Calle|Avenida|Privada)\s[a-zA-Z\\s]+\s#\d{1,4}$/,
+    direccion: /^(Calle|Avenida|Privada)\s[a-zA-ZÀ-ÿ\s]+\s#\d{1,4}$/,
 	telefono: /^\d{10}$/ //10 numeros.
 }
 
@@ -107,6 +107,9 @@ formulario.addEventListener('submit', (e) => {
 		});
 	} else {
 		document.getElementById('formulario_mensaje').classList.add('formulario_mensaje-activo');
+		setTimeout(() => {
+			document.getElementById('formulario_mensaje').classList.remove('formulario_mensaje-activo');
+		}, 5000);
 	}
 });
 

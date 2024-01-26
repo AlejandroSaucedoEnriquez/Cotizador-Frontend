@@ -154,11 +154,13 @@ img.logo{
 }
 
 .esp{
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 
-
+#espacio{
+  margin-top: -3%!important;
+}
 
 
 
@@ -191,7 +193,7 @@ img.logo{
 }
 
 .formulario_input:focus {
-	border: 3px solid #0075FF;
+	border: 3px solid #0e609f;
 	outline: none;
 	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
 }
@@ -200,6 +202,8 @@ img.logo{
 	font-size: 12px;
 	margin-bottom: 0;
 	display: none;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .formulario_input-error-activo {
@@ -218,6 +222,7 @@ img.logo{
 
  
 .formulario_mensaje,
+.formulario_mensaje_bien,
 .formulario_cambiar-btn-enviar {
 	grid-column: span 2;
 }
@@ -225,10 +230,11 @@ img.logo{
 .formulario_mensaje {
 	height: 45px;
 	line-height: 45px;
-	background: #F66060;
+	background: #7a0000;
 	padding: 0 15px;
 	border-radius: 3px;
 	display: none;
+  color: #fff;
 }
 
 .formulario_mensaje-activo {
@@ -261,9 +267,21 @@ img.logo{
 }
 
 .formulario_mensaje-exito {
-	font-size: 14px;
-	color: #119200;
+  height: 45px;
+	line-height: 45px;
+	background: #0e609f;
+	padding: 0 15px;
+	border-radius: 3px;
+	color: #fff;
 	display: none;
+}
+
+.formulario_mensaje_bien{
+  display: block;
+}
+
+.formulario_mensaje_bien p {
+	margin: 0;
 }
 
 .formulario_mensaje-exito-activo {
@@ -272,29 +290,29 @@ img.logo{
 
 /* ----- -----  Estilos para Validacion ----- ----- */
 .formulario_cambiar-correcto .formulario_label {
-	color: #1ed12d;
+	color: #0e609f;
 }
 
 .formulario_cambiar-correcto .icono-validacion {
-	color: #1ed12d;
+	color: #0e609f;
 	opacity: 1;
 }
 
 .formulario_cambiar-correcto .formulario_input {
-	border: 3px solid #1ed12d;
+	border: 3px solid #0e609f;
 }
 
 .formulario_cambiar-incorrecto .formulario_label {
-	color: #bb2929;
+	color: #7a0000;
 }
 
 .formulario_cambiar-incorrecto .icono-validacion {
-	color: #bb2929;
+	color: #7a0000;
 	opacity: 1;
 }
 
 .formulario_cambiar-incorrecto .formulario_input {
-	border: 3px solid #bb2929;
+	border: 3px solid #7a0000;
 }
 
 
@@ -305,6 +323,7 @@ img.logo{
 	}
 
 	.formulario_mensaje,
+  .formulario_mensaje_bien,
 	.formulario_cambiar-btn-enviar {
 		grid-column: 1;
 	}

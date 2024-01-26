@@ -17,8 +17,8 @@
   <img src="img/CotizadorLogo.png" width="42%" class="img-fluid my-4 mx-4">
 
 
-  <div class="w-50 float-end my-4 mx-4">
-    <div class="formbold-form-title">
+  <div class="w-50 float-end my-4 mx-4" id="espacio">
+    <div class="formbold-form-title ">
       <h2 class="">Registrar Cliente</h2>
       <p>
         Registra el cliente que requiere cotizar los equipos para gimnasio.
@@ -26,7 +26,7 @@
     </div>
     <form id="formulario" class="row g-3 formulario" method="POST" novalidate>
 
-      <div class="col-md-6 formulario_cambiar" id="cambiar_nombre">
+      <div class="col-md-12 formulario_cambiar" id="cambiar_nombre">
         <label for="nombre" class="form-label formulario_label">Nombre</label>
         <div class="formulario_cambiar-input">
         <input type="text" class="form-control formulario_input" id="nombre" placeholder="Alex" name="nombre" required>
@@ -36,7 +36,7 @@
           El nombre debe llevar solo letras minimo 3 caracteres, maximo 40
         </p>
       </div>
-      <div class="col-md-6 formulario_cambiar" id="cambiar_apellido">
+      <div class="col-md-12 formulario_cambiar" id="cambiar_apellido">
         <label for="apellido" class="form-label formulario_label">Apellido</label>
         <div class="formulario_cambiar-input">
         <input type="text" class="form-control formulario_input" id="apellido" placeholder="Bibriesca" name="apellido" required>
@@ -46,7 +46,7 @@
           El apellido debe llevar solo letras minimo 3 caracteres, maximo 40
         </p>
       </div>
-      <div class="col-md-6 formulario_cambiar" id="cambiar_email">
+      <div class="col-md-12 formulario_cambiar" id="cambiar_email">
         <label for="email" class="form-label formulario_label">Email</label>
         <div class="formulario_cambiar-input">
         <input type="email" class="form-control formulario_input" id="email" placeholder="alexb@gmail.com" name="email" required>
@@ -56,7 +56,7 @@
           El email debe llevar un @  y terminacion como ejemplo@gmail.com
         </p>
       </div>
-      <div class="col-md-6 formulario_cambiar" id="cambiar_telefono">
+      <div class="col-md-12 formulario_cambiar" id="cambiar_telefono">
         <label for="telefono" class="form-label formulario_label">Telefono</label>
         <div class="formulario_cambiar-input">
         <input type="text" class="form-control formulario_input" id="telefono" placeholder="3332110003" name="telefono" required>
@@ -77,19 +77,23 @@
         </p>
       </div>
 
-      <div class="formulario_mensaje" id="formulario_mensaje">
-				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
-			</div>
-
-      <div class="col-12 my-4 formulario_cambiar formulario_cambiar-btn-enviar">
+      <div class="col-12 formulario_cambiar formulario_cambiar-btn-enviar">
         <button  id="btnRegistrar" class="btn btn-primary formulario_btn" type="submit">
           Registrar Cliente
         </button>
-        <p class="formulario_mensaje-exito" id="formulario_mensaje-exito">Formulario enviado exitosamente</p>
+        
 
         <a href="tabla.html" class="btn btn-primary formulario_btn" >
           Ver tabla de clientes
         </a>
+      </div>
+
+      <div class="formulario_mensaje" id="formulario_mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+      <div class="formulario_mensaje_bien" id="formulario_mensaje_bien">
+        <p class="formulario_mensaje-exito" id="formulario_mensaje-exito"><b>Bien:</b> Formulario enviado exitosamente</p>
       </div>
 
     </form>
