@@ -75,3 +75,21 @@
  .add_circle:hover{
     color: rgb(223, 223, 10);
  }
+
+ .top{
+  top: 0;
+  height: 100vh;
+  background-color: rgba(252, 252, 252, 1);
+  display: grid;
+  place-items: center;
+  transition: .4s;
+}
+.close{
+  top: 5em;
+  left: 90%;
+}
+.translate{
+  transform: translateY(-100%);
+}
+
+

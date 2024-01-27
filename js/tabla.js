@@ -1,44 +1,65 @@
 let dataTable;
 let dataTableIsInitialized = false;
+const table = document.getElementById("tabla");
+const modal = document.getElementById("modal");
+const inputs = document.querySelectorAll("input");
+let count = 0;
 
-const initDataTable = async() =>{
-   if(dataTableIsInitialized){
-      dataTable.destroy();
-   }
+const initDataTable = async () => {
+    if (dataTableIsInitialized) {
+        dataTable.destroy();
+    }
 
-   await listarClientes();
+    await listarClientes();
 
-   dataTable=$("#tabla").DataTable({
-    lengthMenu: [3,5,10,25,50,100,200,500],
-    width: "50%", targets:[0],
-            pageLength: 3,
-            destroy: true,
-			"language":{
-				"lengthMenu": "Mostrar _MENU_ registros por pagina",
-				"info": "Mostrando pagina _PAGE_ de _PAGES_",
-				"infoEmpty": "No hay registros disponibles",
-				"infoFiltered": "(filtrada de _MAX_ registros)",
-				"loadingRecords": "Cargando...",
-				"processing":     "Procesando...",
-				"search": "Buscar:",
-				"zeroRecords":    "No se encontraron registros coincidentes",
-				"paginate": {
-					"next":       "Siguiente",
-					"previous":   "Anterior"
-				},					
-			}
-		});	
-   dataTableIsInitialized = true;
+    dataTable = $("#tabla").DataTable({
+        destroy: true,
+        select: "true",
+        ColumnDefs: [{
+            orderable: false,
+            className: "select-checkbox",
+            targets: 0
+        }],
+        select: {
+            style: "os",
+            selector: "td:first-child"
+        },
+        lengthMenu: [3, 5, 10, 25, 50, 100, 200, 500],
+        width: "50%", targets: [0],
+        pageLength: 3,
+        "language": {
+            "select": {
+                "rows": {
+                    "_": "Usted selecciono %d filas",
+                    "0": "Haga click en una fila para seleccionarla",
+                    "1": "Solo 1 fila seleccionada"
+                },
+            },
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrada de _MAX_ registros)",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "No se encontraron registros coincidentes",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
+    });
+    dataTableIsInitialized = true;
+
 }
 
 
 
 
-
-window.addEventListener("load", async () =>{
+window.addEventListener("load", async () => {
     await initDataTable();
 })
-   
+
 function refrescar() {
     location.reload();
 }
@@ -60,6 +81,7 @@ let listarClientes = async () => {
     for (let cliente of clientes) {
         let contenidoFila = `
     <tr>
+    <td>Click Aqui</td>
     <td>${cliente.id}</td>
     <td>${cliente.nombre}</td>
     <td>${cliente.apellido}</td>
@@ -126,7 +148,16 @@ let editarCliente = async (id) => {
 
 btnModificar.addEventListener("click", evento => {
     aplicarActualizacion(idEditar);
-let cliente = document.getElementById("cliente").style.visibility = "hidden";
+    let cliente = document.getElementById("cliente").style.visibility = "hidden";
+    modal.classList.toggle("translate").hide();
+
+    if (e.target.matches(".btnModificar")) {
+        modal.classList.toggle("translate").hide();
+    }else{
+        modal.classList.toggle("translate").show();
+    }
+   
+        
 })
 
 let aplicarActualizacion = async (id) => {
@@ -155,4 +186,29 @@ function mostrarCliente() {
     let cliente = document.getElementById("cliente").style.visibility = "visible";
 }
 
-   
+
+
+
+window.addEventListener("click", (e) => {
+  if (e.target.matches(".edit")) {
+    let data = e.target.parentElement.parentElement.children;
+    fillData(data);
+    modal.classList.toggle("translate");
+    $(".page-item:not(:first-child) .page-link").hide();
+  }else{
+    $(".page-item:not(:first-child) .page-link").show();
+  }
+
+  if (e.target.matches(".btn-danger")) {
+  modal.classList.toggle("translate");
+  count=0
+  }
+});
+
+const fillData = (data) => {
+  for (let index of inputs) {
+    index.value = data[count].textContent;
+    console.log(index);
+    count += 1;
+  }
+};
