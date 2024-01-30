@@ -84,12 +84,18 @@
   place-items: center;
   transition: .4s;
 }
+
+
 .close{
   top: 5em;
   left: 90%;
 }
+
 .translate{
   transform: translateY(-100%);
 }
 
+.btn-negro {
+  background-color: #000!important;
+}
 

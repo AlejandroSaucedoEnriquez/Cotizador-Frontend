@@ -1,88 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cliente.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <title>Cotizador de Equipos Forza Gym</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/cliente.css">
+  <link rel="stylesheet" href="css/tabla.css">
+  <link rel="stylesheet" href="css/producto.css">
+  <title>Cotizador de Equipos Forza Gym</title>
 </head>
+
+
 <body>
-    <div class="formbold-main-wrapper">
-        <div class="formbold-form-wrapper">
-          
-          <img  class="logo" src="img/LogoForzagymequipment.png">
-      
-          <form method="POST">
-            <div class="formbold-form-title">
-              <h2 class="">Registrar Producto</h2>
-              <p>
-                Registra el producto que requiere cotizar el cliente.
-              </p>
-            </div>
-      
-            <div class="formbold-input-flex">
-              <div>
-                <label for="nombre" class="formbold-form-label">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  name="nombre"
-                  id="nombre"
-                  class="formbold-form-input"
-                />
-              </div>
-              <div>
-                <label for="apellido" class="formbold-form-label"> Apellido </label>
-                <input
-                  type="text"
-                  name="apellido"
-                  id="apellido"
-                  class="formbold-form-input"
-                />
-              </div>
-            </div>
-      
-            <div class="formbold-input-flex">
-              <div>
-                <label for="email" class="formbold-form-label"> Email </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="formbold-form-input"
-                />
-              </div>
-              <div>
-                <label for="telefono" class="formbold-form-label"> Telefono</label>
-                <input
-                  type="text"
-                  name="telefono"
-                  id="telefono"
-                  class="formbold-form-input"
-                />
-              </div>
-            </div>
-      
-            <div class="formbold-mb-3">
-              <label for="direccion" class="formbold-form-label">
-                Direccion
-              </label>
-              <input
-                type="text"
-                name="direccion"
-                id="direccion"
-                class="formbold-form-input"
-              />
-            </div>
-            <a href="tabla.html" id="btnRegistrar" class="formbold-btn">
-              Registrar Cliente
-            </a>
-          </form>
-        </div>
+
+
+  <div class="esp">
+  <img src="img/CotizadorLogo.png" width="42%" class="img-fluid my-4 mx-4">
+
+
+  <div class="w-50 float-end my-4 mx-4" id="espacio">
+    <div class="formbold-form-title ">
+      <h2 class="">Registrar Producto</h2>
+      <p>
+        Registra el Producto de todo lo que hay en bodega.
+      </p>
+    </div>
+    <form id="formulario" class="row g-3 formulario" method="POST" novalidate>
+
+      <div class="col-md-12 formulario_cambiar" id="cambiar_nombre">
+        <label for="nombre" class="form-label formulario_label">Nombre</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="nombre" placeholder="Caminadora Life fitness Signature" name="nombre" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div> 
+        <p class="formulario_input-error">
+          El nombre del producto debe llevar solo letras maximo 40 caracteres
+        </p>
       </div>
-      <script src="js/cliente.js"></script>
+      <div class="col-md-12 formulario_cambiar" id="cambiar_sku">
+        <label for="sku" class="form-label formulario_label">Sku</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="sku" placeholder="CamPla001" name="sku" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div>
+        <p class="formulario_input-error">
+          El sku debe llevar 3 iniciales del nombre del equipo, las 3 iniciales del color y terminacion con numeracion de 3 digitos
+        </p>
+      </div>
+      <div class="col-md-12 formulario_cambiar" id="cambiar_precio">
+        <label for="precio" class="form-label formulario_label">Precio</label>
+        <div class="formulario_cambiar-input">
+        <input type="number" min="10" max="100000000" class="form-control formulario_input" id="precio" placeholder="20000" name="precio" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div>
+        <p class="formulario_input-error">
+          El precio debe llevar puros numeros terminacion .00
+        </p>
+      </div>
+
+      <div class="col-md-12 formulario_cambiar" id="cambiar_stock">
+        <label for="stock" class="form-label formulario_label">Stock</label>
+        <div class="formulario_cambiar-input">
+        <input type="number" min="1" max="999" class="form-control formulario_input" id="stock" placeholder="10" name="stock" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div>
+        <p class="formulario_input-error">
+          El stock debe llevar puros numeros son los equipos que hay 
+        </p>
+      </div>
+      <div class="col-md-12 formulario_cambiar" id="cambiar_descripcion">
+        <label for="descripcion" class="form-label formulario_label">Descripcion</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="descripcion" placeholder="La caminadora es de color plata y cuenta con pista" name="descripcion" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div>
+        <p class="formulario_input-error">
+          La descricpion debe llevar solo letras con maximo de 150
+        </p>
+      </div>
+      <div class="col-md-12 formulario_cambiar" id="cambiar_categoria">
+        <label for="categoria" class="form-label formulario_label">Categoria</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="categoria" placeholder="Cardio" name="categoria" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div> 
+        <p class="formulario_input-error">
+          El categoria debe ser Cardio|Fuerza|Fuerza parte alta|Fuerza parte baja|Accesorios
+        </p>
+      </div>
+      <div class="col-md-12 formulario_cambiar" id="cambiar_marca">
+        <label for="marca" class="form-label formulario_label">Marca</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="marca" placeholder="Precor" name="marca" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div> 
+        <p class="formulario_input-error">
+          La marca de llevar Life fitness|Precor|Technogym|Matrix|Octane|Startrac|Nautilus|Cybex|Freemotion|StairMaster|Hammer Strength|Hoist
+        </p>
+      </div>
+      <div class="col-md-12 formulario_cambiar" id="cambiar_modelo">
+        <label for="modelo" class="form-label formulario_label">Modelo</label>
+        <div class="formulario_cambiar-input">
+        <input type="text" class="form-control formulario_input" id="modelo" placeholder="P80" name="modelo" required>
+        <i class="icono-validacion fas fa-times-circle"></i>
+      </div> 
+        <p class="formulario_input-error">
+          El modelo no debe ser nulo y debe llevar Signature|Pro1|Pro2 en caso de ser Life fitness
+        </p>
+      </div>  
+      
+      <div class="col-12 formulario_cambiar formulario_cambiar-btn-enviar">
+
+        <a href="tabla.html" class="btn btn-primary btn-negro">
+          Regresar
+        </a>
+
+        <button  id="btnRegistrarProducto" class="btn btn-primary formulario_btn" type="submit">
+          Registrar Producto
+        </button>
+        
+
+        <a href="tablaproductos.html" class="btn btn-primary formulario_btn" >
+          Ver tabla de productos
+        </a>
+
+       
+
+      </div>
+
+      <div class="formulario_mensaje" id="formulario_mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+      <div class="formulario_mensaje_bien" id="formulario_mensaje_bien">
+        <p class="formulario_mensaje-exito" id="formulario_mensaje-exito"><b>Bien:</b> Formulario enviado exitosamente</p>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+    <!--<script type="text/javascript" src="js/cliente.js?v=0.1"></script>-->
+    <!--<script type="text/javascript" src="js/tabla.js?v=0.1"></script>-->
+    <script type="text/javascript" src="js/producto.js?v=0.1"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
