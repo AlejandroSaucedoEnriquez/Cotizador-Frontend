@@ -1,21 +1,21 @@
-let dataTable;
-let dataTableIsInitialized = false;
-const table = document.getElementById("tablaproductos");
-const modal = document.getElementById("modalproducto");
-const inputs = document.querySelectorAll("input");
-let count = 0;
+let dataTableproductos;
+let dataTableproductosIsInitialized = false;
+const tableproductos = document.getElementById("tablaproductos");
+const modalproducto = document.getElementById("modalproducto");
+const inputsproductos = document.querySelectorAll("input");
+let countproductos = 0;
 
 
-const initDataTable = async () => {
-    if (dataTableIsInitialized) {
-        dataTable.destroy();
+const initDataTableproductos = async () => {
+    if (dataTableproductosIsInitialized) {
+        dataTableproductos.destroy();
     }
 
     await listarProductos();
 
-    dataTable = $("#tablaproductos").DataTable({
+    dataTableproductos = $("#tablaproductos").DataTable({
         destroy: true,
-        select: "true",
+        select: true,
         ColumnDefs: [{
             orderable: false,
             className: "select-checkbox",
@@ -50,7 +50,7 @@ const initDataTable = async () => {
             },
         }
     });
-    dataTableIsInitialized = true;
+    dataTableproductosIsInitialized = true;
 
 }
 
@@ -58,7 +58,7 @@ const initDataTable = async () => {
 
 
 window.addEventListener("load", async () => {
-    await initDataTable();
+    await initDataTableproductos();
 })
 
 window.onload = function(){
@@ -111,13 +111,13 @@ let listarProductos = async () => {
 }
 
 
-let idEditar;
+let idEditarproducto;
 
  let editarProducto = async (id) => {
 
     mostrarProducto();
 
-    idEditar = id;
+    idEditarproducto = id;
 
     const peticion = await fetch("http://localhost:8080/productos/" + id,
         {
@@ -145,12 +145,12 @@ let idEditar;
 
 
 btnModificar.addEventListener("click", e => {
-    aplicarActualizacionProductos(idEditar);
+    aplicarActualizacionProductos(idEditarproducto);
     let producto = document.getElementById("producto").style.visibility = "hidden";
-    modal.classList.toggle("translate");
+    modalproducto.classList.toggle("translate");
 
     if (e.target.matches(".btnModificar")) {
-        modal.classList.toggle("translate").hide();
+        modalproducto.classList.toggle("translate").hide();
     }
    
         
@@ -204,22 +204,22 @@ function mostrarProducto() {
 window.addEventListener("click", (e) => {
   if (e.target.matches(".edit")) {
     let data = e.target.parentElement.parentElement.children;
-    fillData(data);
-    modal.classList.toggle("translate");
+    fillDataproductos(data);
+    modalproducto.classList.toggle("translate");
     $(".page-item:not(:first-child) .page-link").hide();
   }else{
     $(".page-item:not(:first-child) .page-link").show();
   }
 
   if (e.target.matches(".btn-danger")) {
-  modal.classList.toggle("translate");
-  count=0
+  modalproducto.classList.toggle("translate");
+  countproductos=0
   }
 });
 
-const fillData = (data) => {
-    for (let index of inputs) {
-      index.value = data[count].textContent;
-      count += 1; 
+const fillDataproductos = (data) => {
+    for (let index of inputsproductos) {
+      index.value = data[countproductos].textContent;
+      countproductos += 1; 
    }   
   };

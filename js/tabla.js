@@ -15,7 +15,7 @@ const initDataTable = async () => {
 
     dataTable = $("#tabla").DataTable({
         destroy: true,
-        select: "true",
+        select: true,
         ColumnDefs: [{
             orderable: false,
             className: "select-checkbox",
@@ -214,3 +214,5 @@ const fillData = (data) => {
   window.onload = function(){
     listarClientes();
 }
+
+
