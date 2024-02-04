@@ -72,10 +72,14 @@
     color: #dc2a2a;
   }
 
- .add_circle:hover{
+ .add_circle a:hover{
     color: rgb(223, 223, 10);
  }
 
+ .add_circle a{
+  color: #aaa;
+  text-decoration: none; 
+}
  .top{
   top: 0;
   height: 100vh;
@@ -97,5 +101,11 @@
 
 .btn-negro {
   background-color: #000!important;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  background-color: #0e609f;
 }
 

@@ -6,6 +6,8 @@ const inputs = document.querySelectorAll("input");
 let count = 0;
 
 
+
+
 const initDataTable = async () => {
     if (dataTableIsInitialized) {
         dataTable.destroy();
@@ -13,21 +15,97 @@ const initDataTable = async () => {
 
     await listarClientes();
 
+/*$(document).ready(function() {
+    var dataSet1 = [{
+        id: 1,
+        Nombre: "Alejandro",
+        Apellido: "Saucedo",
+        Direccion: "Avenida Independencia #56",
+        Email: "alex@gmail.com",
+        Telefono: "3323113000"
+    },
+    {
+        id: 2,
+        Nombre: "Alberto",
+        Apellido: "Gonzalez",
+        Direccion: "Avenida Independencia #56",
+        Email: "albert@gmail.com",
+        Telefono: "3323115000"
+    },
+    {
+        id: 3,
+        Nombre: "alex",
+        Apellido: "Perez",
+        Direccion: "Avenida Independencia #56",
+        Email: "alex@gmail.com",
+        Telefono: "3323113000"
+    },
+    {
+        id: 4,
+        Nombre: "Andres",
+        Apellido: "Manuel",
+        Direccion: "Avenida Independencia #56",
+        Email: "andres@gmail.com",
+        Telefono: "3323228000"
+    }
+    ];*/
+
     dataTable = $("#tabla").DataTable({
-        destroy: true,
-        select: true,
-        ColumnDefs: [{
-            orderable: false,
-            className: "select-checkbox",
-            targets: 0
-        }],
-        select: {
-            style: "os",
-            selector: "td:first-child"
+      /*data: dataSet1,
+      dom: "Bfrtip",
+      buttons: [{
+      extend: "pdfHtml5",
+      exportOptions: {
+      orthogonal: "myExport"
+      }
+    }],
+    columns: [{
+        data: "id"
+      },
+      {
+        data: "nombre"
+      },
+      {
+        data: "apellido"
+      },
+      {
+        data: "direccion"
+      },
+      {
+        data: "email"
+      },
+      {
+        data: "telefono"
+      },
+      {
+        data: "status",
+        render: function(data, type, row) {
+          if (type === 'myExport') {
+            return data === 'Active' ? "Y" : "N";
+          }
+          if (data === 'Active') {
+            return '<input type="checkbox" class="editor-active" onclick="return false;" checked>';
+          } else {
+            return '<input type="checkbox" onclick="return false;" class="editor-active">';
+          }
+          return data;
         },
-        lengthMenu: [3, 5, 10, 25, 50, 100, 200, 500],
-        width: "50%", targets: [0],
-        pageLength: 3,
+        className: "dt-body-center text-center"
+      }
+    ],*/
+        "destroy": true,
+        "select": true,
+        /*"columnDefs": [{
+            "orderable": false,
+            "className": "select-checkbox",
+            "targets": 0
+        }],
+        "select": {
+            "style": "os",
+            "selector": "td:first-child",
+        },*/
+        "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
+        "pageLength": 2,
         "language": {
             "select": {
                 "rows": {
@@ -50,8 +128,16 @@ const initDataTable = async () => {
             },
         }
     });
+//});
     dataTableIsInitialized = true;
 
+    $("#submit").click(function() {
+        table.$("input:checkbox:checked").each(function(){
+                    $(this).closest('td').siblings().each(function(){
+                      console.log($(this).text());
+                    });
+                    });
+                    })
 }
 
 
@@ -82,7 +168,6 @@ let listarClientes = async () => {
     for (let cliente of clientes) {
         let contenidoFila = `
     <tr>
-    <td>Click Aqui</td>
     <td>${cliente.id}</td>
     <td>${cliente.nombre}</td>
     <td>${cliente.apellido}</td>
@@ -92,7 +177,7 @@ let listarClientes = async () => {
     <td>
     <i onClick="editarCliente(${cliente.id})" class="material-icons button edit">edit</i>
     <i onClick="borrarCliente(${cliente.id})" class="material-icons button delete">delete</i>
-    <i onClick="editarCliente(${cliente.id})" class="material-icons button edit">add_circle</i>
+    <i class="material-icons button add_circle"><a href="producto.html">add_circle</a></i>
     </td>
     </tr>
     `   
@@ -211,8 +296,8 @@ const fillData = (data) => {
    }   
   };
 
-  window.onload = function(){
+  /*window.onload = function(){
     listarClientes();
-}
+}*/
 
 

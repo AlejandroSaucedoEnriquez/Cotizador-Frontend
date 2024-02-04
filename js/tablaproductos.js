@@ -14,20 +14,21 @@ const initDataTableproductos = async () => {
     await listarProductos();
 
     dataTableproductos = $("#tablaproductos").DataTable({
-        destroy: true,
-        select: true,
-        ColumnDefs: [{
-            orderable: false,
-            className: "select-checkbox",
-            targets: 0
-        }],
-        select: {
-            style: "os",
-            selector: "td:first-child"
-        },
-        lengthMenu: [3, 5, 10, 25, 50, 100, 200, 500],
-        width: "50%", targets: [0],
-        pageLength: 3,
+        "destroy": true,
+        "select": true,
+        /*"columnDefs": [
+           {
+            "orderable": false,
+            "className": "select-checkbox",
+            "targets": 0
+            }
+       ],
+        "select": {
+            "style": "os",
+            "selector": "td:first-child"
+        },*/
+        "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
+        "pageLength": 2,
         "language": {
             "select": {
                 "rows": {
@@ -61,9 +62,9 @@ window.addEventListener("load", async () => {
     await initDataTableproductos();
 })
 
-window.onload = function(){
+/*window.onload = function(){
     listarProductos();
-}
+}*/
 
 function refrescar() {
     location.reload();
@@ -86,7 +87,6 @@ let listarProductos = async () => {
     for (let producto of productos) {
         let contenidoFila = `
     <tr>
-    <td>Click Aqui</td>
     <td>${producto.id}</td>
     <td>${producto.nombre}</td>
     <td>${producto.sku}</td>
@@ -99,7 +99,7 @@ let listarProductos = async () => {
     <td>
     <i onClick="editarProducto(${producto.id})" class="material-icons button edit">edit</i>
     <i onClick="borrarProducto(${producto.id})" class="material-icons button delete">delete</i>
-    <i onClick="editarProducto(${producto.id})" class="material-icons button edit">add_circle</i>
+    <i class="material-icons button add_circle"><a href="itemcotizacion.html">add_circle</a></i>
     </td>
     </tr>
     `   
@@ -223,3 +223,15 @@ const fillDataproductos = (data) => {
       countproductos += 1; 
    }   
   };
+
+
+let valoresCheck = [];
+$("#tabla").DataTable().rows().every(function () {
+    var data = this.data();
+    if (data[0] == true) { // data[0] corresponde a la columna del checkbox
+        valoresCheck.push(data[1]); // data[1] correspondería a la columna 'id'
+    }
+    
+    console.log(valoresCheck);
+});
+
