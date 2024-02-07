@@ -232,6 +232,6 @@ $("#tabla").DataTable().rows().every(function () {
         valoresCheck.push(data[1]); // data[1] correspondería a la columna 'id'
     }
     
-    console.log(valoresCheck);
+    //console.log(valoresCheck);
 });
 
