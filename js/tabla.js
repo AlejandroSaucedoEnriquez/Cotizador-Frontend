@@ -15,95 +15,9 @@ const initDataTable = async () => {
 
     await listarClientes();
 
-/*$(document).ready(function() {
-    var dataSet1 = [{
-        id: 1,
-        Nombre: "Alejandro",
-        Apellido: "Saucedo",
-        Direccion: "Avenida Independencia #56",
-        Email: "alex@gmail.com",
-        Telefono: "3323113000"
-    },
-    {
-        id: 2,
-        Nombre: "Alberto",
-        Apellido: "Gonzalez",
-        Direccion: "Avenida Independencia #56",
-        Email: "albert@gmail.com",
-        Telefono: "3323115000"
-    },
-    {
-        id: 3,
-        Nombre: "alex",
-        Apellido: "Perez",
-        Direccion: "Avenida Independencia #56",
-        Email: "alex@gmail.com",
-        Telefono: "3323113000"
-    },
-    {
-        id: 4,
-        Nombre: "Andres",
-        Apellido: "Manuel",
-        Direccion: "Avenida Independencia #56",
-        Email: "andres@gmail.com",
-        Telefono: "3323228000"
-    }
-    ];*/
-
     dataTable = $("#tabla").DataTable({
-      /*data: dataSet1,
-      dom: "Bfrtip",
-      buttons: [{
-      extend: "pdfHtml5",
-      exportOptions: {
-      orthogonal: "myExport"
-      }
-    }],
-    columns: [{
-        data: "id"
-      },
-      {
-        data: "nombre"
-      },
-      {
-        data: "apellido"
-      },
-      {
-        data: "direccion"
-      },
-      {
-        data: "email"
-      },
-      {
-        data: "telefono"
-      },
-      {
-        data: "status",
-        render: function(data, type, row) {
-          if (type === 'myExport') {
-            return data === 'Active' ? "Y" : "N";
-          }
-          if (data === 'Active') {
-            return '<input type="checkbox" class="editor-active" onclick="return false;" checked>';
-          } else {
-            return '<input type="checkbox" onclick="return false;" class="editor-active">';
-          }
-          return data;
-        },
-        className: "dt-body-center text-center"
-      }
-    ],*/
         "destroy": true,
         "select": true,
-        /*"columnDefs": [{
-            "orderable": false,
-            "className": "select-checkbox",
-            "targets": 0
-        }],
-        "select": {
-            "style": "os",
-            "selector": "td:first-child",
-        },*/
         "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
         "pageLength": 2,
         "language": {
@@ -128,7 +42,7 @@ const initDataTable = async () => {
             },
         }
     });
-//});
+
     dataTableIsInitialized = true;
 
     $("#submit").click(function() {
@@ -296,8 +210,6 @@ const fillData = (data) => {
    }   
   };
 
-  /*window.onload = function(){
-    listarClientes();
-}*/
+
 
 

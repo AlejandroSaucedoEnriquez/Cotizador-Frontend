@@ -1,202 +1,18 @@
-/*$(document).ready(function(){
-  $("#agregarcantidad").click(function(){
-    cantidad();
-  });
-});
-
-function cantidad(){
-    $("#tablaproductos tr").each(function(){
-    let cantidad = $(this).find('td').eq(5).text();
-    let obtenerCantidad = $(this).find('#cantidad').val();
-    console.log(obtenerCantidad);
-});
-}
-*/
-
 function calcular_costo(button) {
     let tr = button.closest('tr'),
-      cantidad = tr.querySelector('input[name="cantidad"]').value || 0,
-      precio = tr.querySelector('td[data-value="precio"]').innerText,
-      total = tr.querySelector('td[data-value="total"]');
-    
-    total.innerText = (precio * cantidad).toFixed(2);
-  }
+        cantidad = tr.querySelector('input[name="cantidad"]').value || 0,
+        precio = tr.querySelector('td[data-value="precio"]').innerText,
+        subtotal = tr.querySelector('td[data-value="subtotal"]');
 
-
-/*let boton = document.getElementById("btncrearitemcotizacion");
-
-boton.addEventListener("click", e =>{
-      crearItemCotizacion();
-});
-
-
-
-let crearItemCotizacion = async()=>{
-
-let campos = {};
-campos.productoId = id;
-campos.cantidad = document.getElementById("cantidad").value;
-
-
-
-const peticion = await fetch("http://localhost:8080/api/item-cotizacion",
-{
-    method:'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(campos)
-});
+    subtotal.innerText = (precio * cantidad).toFixed(2);
 }
 
-
-
-
-
-let botoncantidad = document.getElementById("agregarcantidad");
-/*const formulariocantidad = document.getElementById('formulario');
-const inputscantidad = document.querySelectorAll('#formulario input');*/
-
-
-/*botoncantidad.addEventListener("click", e =>{
-      agregarCantidad();
-});
-
-
-let agregarCantidad = async()=>{
-
-let camposcantidad = {};
-
-camposcantidad.nombre = document.getElementById("nombre")?.value || '';
-camposcantidad.sku = document.getElementById("sku")?.value || '';
-camposcantidad.precio = document.getElementById("precio")?.value || '';
-camposcantidad.stock = document.getElementById("stock")?.value || '';
-camposcantidad.cantidad = document.getElementById("cantidad")?.value || '';
-camposcantidad.descripcion = document.getElementById("descripcion")?.value || '';
-camposcantidad.categoria= document.getElementById("categoria")?.value || '';
-camposcantidad.marca = document.getElementById("marca")?.value || '';
-camposcantidad.modelo = document.getElementById("modelo")?.value || '';
-
-
-const peticion = await fetch("http://localhost:8080/productos",
-{
-    method:'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(camposcantidad)
-});
+function traer_cantidad(button) {
+    let tr = button.closest('tr'),
+        cantidad = tr.querySelector('input[name="cantidad"]').value || 0,
+        traercantidad = tr.querySelector('td[data-value="traercantidad"]');
+        traercantidad.innerText = cantidad;
 }
-
-/*const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ0-9\s]{10,40}$/,
-    sku: /^[a-zA-ZÀ-ÿ\s]{6}\d{3}$/,
-	precio: /^\d{2,10}$/,
-    stock: /^\d{1,3}$/,
-    cantidad: /^\d{1,3}$/,
-	descripcion: /^[a-zA-ZÀ-ÿ\s]{10,150}$/, 
-    categoria: /^(Cardio|Fuerza|Fuerza parte alta|Fuerza parte baja|Accesorios)$/, 
-    marca:  /^(Life fitness|Precor|Technogym|Matrix|Octane|Startrac|Nautilus|Cybex|Freemotion|StairMaster|Hammer Strength|Hoist)$/, 
-    modelo:  /^[a-zA-ZÀ-ÿ0-9\s]{1,40}$/ 
-}
-
-
-
-const camposcantidad = {
-	nombre: false,
-	sku: false,
-	precio: false,
-    cantidad: false,
-	descripcion: false,
-    categoria: false,
-    marca: false,
-    modelo: false
-}
-
-const validarFormulario = (e) => {
-	switch (e.target.name) {
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
-		case "sku":
-			validarCampo(expresiones.sku, e.target, 'sku');
-		break;
-		case "precio":
-			validarCampo(expresiones.precio, e.target, 'precio');
-		break;
-        case "stock":
-			validarCampo(expresiones.stock, e.target, 'stock');
-		break;
-        case "cantidad":
-			validarCampo(expresiones.cantidad, e.target, 'cantidad');
-		break;
-		case "descripcion":
-			validarCampo(expresiones.descripcion, e.target, 'descripcion');
-		break;
-        case "categoria":
-			validarCampo(expresiones.categoria, e.target, 'categoria');
-		break;
-        case "marca":
-			validarCampo(expresiones.marca, e.target, 'marca');
-		break;
-        case "modelo":
-			validarCampo(expresiones.modelo, e.target, 'modelo');
-		break;
-	}
-}
-
-const validarCampo = (expresion, input, campocantidad) => {
-	if(expresion.test(input.value)){
-		document.getElementById(`cambiar_${campocantidad}`).classList.remove('formulario_cambiar-incorrecto');
-		document.getElementById(`cambiar_${campocantidad}`).classList.add('formulario_cambiar-correcto');
-        document.querySelector(`#cambiar_${campocantidad} i`).classList.add('fa-check-circle');
-		document.querySelector(`#cambiar_${campocantidad} i`).classList.remove('fa-times-circle');
-		document.querySelector(`#cambiar_${campocantidad} .formulario_input-error`).classList.remove('formulario_input-error-activo');
-		camposcantidad[campocantidad] = true;
-	} else {
-		document.getElementById(`cambiar_${campocantidad}`).classList.add('formulario_cambiar-incorrecto');
-		document.getElementById(`cambiar_${campocantidad}`).classList.remove('formulario_cambiar-correcto');
-        document.querySelector(`#cambiar_${campocantidad} i`).classList.add('fa-times-circle');
-		document.querySelector(`#cambiar_${campocantidad} i`).classList.remove('fa-check-circle');
-		document.querySelector(`#cambiar_${campocantidad} .formulario_input-error`).classList.add('formulario_input-error-activo');
-		camposcantidad[campocantidad] = false;
-	}
-}
-
-
-
-inputscantidad.forEach((input) => {
-    input.addEventListener('keyup', validarFormulario);
-    input.addEventListener('blur', validarFormulario);
-});
-
-
-
-formulariocantidad.addEventListener('submit', (e) => {
-	e.preventDefault();
-    
-	if(camposcantidad.nombre && camposcantidad.sku && camposcantidad.precio &&  camposcantidad.stock && camposcantidad.descripcion && camposcantidad.categoria && camposcantidad.marca && camposcantidad.modelo){
-		formulario.reset();
-
-		document.getElementById('formulario_mensaje-exito').classList.add('formulario_mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario_mensaje-exito').classList.remove('formulario_mensaje-exito-activo');
-		}, 5000);
-
-		document.querySelectorAll('.formulario_cambiar-correcto').forEach((icono) => {
-			icono.classList.remove('formulario_cambiar-correcto');
-		});
-	} else {
-		document.getElementById('formulario_mensaje').classList.add('formulario_mensaje-activo');
-		setTimeout(() => {
-			document.getElementById('formulario_mensaje').classList.remove('formulario_mensaje-activo');
-		}, 5000);
-	}
-});
-
-*/
 
 let dataTableproductos;
 let dataTableproductosIsInitialized = false;
@@ -215,19 +31,7 @@ const initDataTableproductos = async () => {
 
     dataTableproductos = $("#tablaproductos").DataTable({
         "destroy": true,
-        /*"select": true,
-        "columnDefs": [
-           {
-            "orderable": false,
-            "className": "select-checkbox",
-            "targets": 0
-            }
-       ],
-        "select": {
-            "style": "os",
-            "selector": "td:first-child"
-        },*/
-        "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
+        "lengthMenu": [[2, 4, 8, 16, 32, 100, 200, 500 - 1], [2, 4, 8, 16, 32, 100, 200, 500, "All"]],
         "pageLength": 2,
         "language": {
             "select": {
@@ -252,34 +56,35 @@ const initDataTableproductos = async () => {
         }
     });
 
-    $("#cotizar").click(function() {
-        dataTableproductos.$("input:checkbox:checked").each(function(){
-                    $(this).closest('td').siblings().each(function(){
-                    console.log($(this).text());
-                    });
-                    });
-                    })
+    $("#cotizar").click(function () {
+        dataTableproductos.$("input:checkbox:checked").each(function () {
+            $(this).closest('td').siblings().each(function () {
+                console.log($(this).text());
+            });
+        });
+    })
 
-                    await listarProductos();
+    await listarProductos();
 
-                    $(document).ready(function(){
-                        $('.enviar').on('click', function() {
-                        var hermano=$(this).parent();
-                        $("#tablaproductos2").prepend(`<tr>\
-                                            <td>${hermano.siblings("td:eq(0)").text()}</td>\
-                                            <td>${hermano.siblings("td:eq(1)").text()}</td>\
-                                            <td>${hermano.siblings("td:eq(2)").text()}</td>\
-                                            <td>${hermano.siblings("td:eq(3)").text()}</td>\
-                                            <td>${hermano.siblings("td:eq(4)").text()}</td>\
-                                            <td>${hermano.cantidad}`+"</td>\
-                                            <td>"+hermano.siblings("td:eq(6)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(7)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(8)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(9)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(10)").text()+"</td>\
+    $(document).ready(function () {
+        $('.enviar').on('click', function () {
+            var hermano = $(this).parent();
+            $("#tablaproductos2").prepend("<tr>\
+                                            <td>"+ hermano.siblings("td:eq(0)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(1)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(2)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(3)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(4)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(13)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(6)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(7)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(8)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(9)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(10)").text() + "</td>\
                                                             </tr>")
-                      });
-                    })
+            listarCotizacion();
+        });
+    })
 
 
     dataTableproductosIsInitialized = true;
@@ -291,9 +96,6 @@ window.addEventListener("load", async () => {
     await initDataTableproductos();
 })
 
-/*window.onload = function(){
-    listarProductos();
-}*/
 
 function refrescar() {
     location.reload();
@@ -322,21 +124,24 @@ let listarProductos = async () => {
     <td>${producto.stock}</td>
     <td data-value="precio">${producto.precio}</td>
     <td data-value="cantidad"><input type="number" min="1" max="999" class="form-control formulario_input" id="cantidad" name="cantidad" required></td>
-    <td data-value="total">0.00</td>
+    <td data-value="subtotal" name="subtotal">0.00</td>
     <td>${producto.descripcion}</td>
     <td>${producto.categoria}</td>
     <td>${producto.marca}</td>
     <td>${producto.modelo}</td>
-    <td><button type="button" onclick="calcular_costo(this)">SUBTOTAL</button></td>
-    <td><input type="button" value="Cotizar" class="enviar"></td>
+    <td><button type="button" onclick="calcular_costo(this)">Subtotal</button></td>
+    <td><button type="button" onclick="traer_cantidad(this)">Cantidad</button></td>
+    <td data-value="traercantidad">0</td>
+    <td><input type="button" value="Cotizar" class="enviar"></td> 
     <td>
     <i onClick="editarProducto(${producto.id})" class="material-icons button edit">edit</i>
     <i onClick="borrarProducto(${producto.id})" class="material-icons button delete">delete</i>
-    <i onClick="agregarcantidadProducto(${producto.id})" class="material-icons button add_circle">add_circle</i>
     </td>
     </tr>
-    `   
-        
+    `
+    
+
+
         contenidoTabla += contenidoFila;
     }
 
@@ -345,165 +150,6 @@ let listarProductos = async () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*let dataTableproductoscantidad;
-let dataTableproductosIsInitializedcantidad = false;
-const tableproductoscantidad = document.getElementById("tablaproductoscantidad");
-const modalproductocantidad = document.getElementById("modalproducto");
-const inputsproductoscantidad = document.querySelectorAll("input");
-let countproductoscantidad = 0;
-
-
-const initDataTableproductoscantidad = async () => {
-    if (dataTableproductosIsInitialized) {
-        dataTableproductoscantidad.destroy();
-    }
-
-    await listarProductosCantidad();
-
-    dataTableproductoscantidad = $("#tablaproductoscantidad").DataTable({
-        "destroy": true,
-        /*"select": true,
-        "columnDefs": [
-           {
-            "orderable": false,
-            "className": "select-checkbox",
-            "targets": 0
-            }
-       ],
-        "select": {
-            "style": "os",
-            "selector": "td:first-child"
-        },*/
-       /* "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
-        "pageLength": 2,
-        "language": {
-            "select": {
-                "rows": {
-                    "_": "Usted selecciono %d filas",
-                    "0": "Haga click en una fila para seleccionarla",
-                    "1": "Solo 1 fila seleccionada"
-                },
-            },
-            "lengthMenu": "Mostrar _MENU_ registros por pagina",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrada de _MAX_ registros)",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscar:",
-            "zeroRecords": "No se encontraron registros coincidentes",
-            "paginate": {
-                "next": "Siguiente",
-                "previous": "Anterior"
-            },
-        }
-    });
-
-    $("#cotizar").click(function() {
-        dataTableproductos.$("input:checkbox:checked").each(function(){
-                    $(this).closest('td').siblings().each(function(){
-                    console.log($(this).text());
-                    });
-                    });
-                    })
-
-                    $(document).ready(function(){
-                        $('.enviar').on('click', function() {
-                        var hermano=$(this).parent();
-                        $("#tablaproductos2").prepend("<tr>\
-                                            <td>"+hermano.siblings("td:eq(1)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(6)").text()+"</td>\
-                                                            </tr>")
-                      });
-                    })
-
-
-    dataTableproductosIsInitializedcantidad = true;
-
-}
-
-
-window.addEventListener("load", async () => {
-    await initDataTableproductoscantidad();
-})
-
-/*window.onload = function(){
-    listarProductos();
-}*/
-
-/*function refrescar() {
-    location.reload();
-}
-
-let listarProductosCantidad = async () => {
-    const peticion = await fetch("http://localhost:8080/productos",
-        {
-            method: "GET",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        });
-
-    const productoscantidad = await peticion.json();
-
-    let contenidoTabla = "";
-
-    for (let productocantidad of productoscantidad) {
-        let contenidoFila = `
-    <tr>
-    <td>
-    <input type="checkbox" name="customersSelecteds" class="chkCheckBoxId"/>
-    </td>
-    <td>${productocantidad.id}</td>
-    <td>${productocantidad.nombre}</td>
-    <td>${productocantidad.sku}</td>
-    <td>${productocantidad.precio}</td>
-    <td>${productocantidad.stock}</td>
-    <td>${productocantidad.cantidad}</td>
-    <td>${productocantidad.descripcion}</td>
-    <td>${productocantidad.categoria}</td>
-    <td>${productocantidad.marca}</td>
-    <td>${productocantidad.modelo}</td>
-    <td><input type="button" value="Cotizar" class="enviar"></td>
-    <td>
-    <i onClick="editarProducto(${productocantidad.id})" class="material-icons button edit">edit</i>
-    <i onClick="borrarProducto(${productocantidad.id})" class="material-icons button delete">delete</i>
-    <i onClick="editarProducto(${productocantidad.id})" class="material-icons button edit">add_circle</i>
-    </td>
-    </tr>
-    `   
-        
-        contenidoTabla += contenidoFila;
-    }
-
-    tabla_productoscantidad.innerHTML = contenidoTabla;
-}
-
-
-*/
 
 
 
@@ -531,17 +177,7 @@ const initDataTable = async () => {
 
     dataTable = $("#tabla").DataTable({
         "destroy": true,
-        /*"select": true,
-        "columnDefs": [{
-            "orderable": false,
-            "className": "select-checkbox",
-            "targets": 0
-        }],
-        "select": {
-            "style": "os",
-            "selector": "td:first-child",
-        },*/
-        "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
+        "lengthMenu": [[2, 4, 8, 16, 32, 100, 200, 500 - 1], [2, 4, 8, 16, 32, 100, 200, 500, "All"]],
         "pageLength": 2,
         "language": {
             "select": {
@@ -563,31 +199,31 @@ const initDataTable = async () => {
                 "next": "Siguiente",
                 "previous": "Anterior"
             },
-        }   
+        }
     });
 
-    $("#cotizar").click(function() {
-        dataTable.$("input:checkbox:checked").each(function(){
-                    $(this).closest('td').siblings().each(function(){
-                    console.log($(this).text());
-                    });
-                    });
-                    })
+    $("#cotizar").click(function () {
+        dataTable.$("input:checkbox:checked").each(function () {
+            $(this).closest('td').siblings().each(function () {
+                console.log($(this).text());
+            });
+        });
+    })
 
-                    $(document).ready(function(){
-                        $('.envio').on('click', function() {
-                        var hermano=$(this).parent();
-                        $("#tabla2").prepend("<tr>\
-                                            <td>"+hermano.siblings("td:eq(1)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(2)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(3)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(4)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(5)").text()+"</td>\
-                                            <td>"+hermano.siblings("td:eq(6)").text()+"</td>\
+    $(document).ready(function () {
+        $('.envio').on('click', function () {
+            var hermano = $(this).parent();
+            $("#tabla2").prepend("<tr id='cliente-hermano-" + hermano.siblings("td:eq(1)").text() + "'>\
+                                            <td>"+ hermano.siblings("td:eq(1)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(2)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(3)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(4)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(5)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(6)").text() + "</td>\
                                                             </tr>")
-                      });
-                    })
-    
+        });
+    })
+
     dataTableIsInitialized = true;
 
 }
@@ -633,16 +269,203 @@ let listarClientes = async () => {
     <td>
     <i onClick="editarProducto(${cliente.id})" class="material-icons button edit">edit</i>
     <i onClick="borrarProducto(${cliente.id})" class="material-icons button delete">delete</i>
-    <i onClick="editarProducto(${cliente.id})" class="material-icons button edit">add_circle</i>
     </td>
     </tr>
-    `   
-        
+    `
+
         contenidoTabla += contenidoFila;
     }
 
     tabla_clientes.innerHTML = contenidoTabla;
 }
+
+
+
+
+
+
+
+
+
+
+function cotizacion(button) {
+    let tr = button.closest('tr'),
+        id = tr.querySelector('input[name="#"]')
+    cantidad = tr.querySelector('input[name="cantidad"]').value || 0,
+        precio = tr.querySelector('td[data-value="precio"]').innerText,
+        subtotal = tr.querySelector('td[data-value="subtotal"]');
+
+    subtotal.innerText = (precio * cantidad).toFixed(2);
+}
+
+
+let dataTableCotizacion;
+let dataTableIsInitializedCotizacion = false;
+const tableCotizacion = document.getElementById("tablacotizaciones");
+const modalCotizacion = document.getElementById("modal");
+const inputsCotizacion = document.querySelectorAll("input");
+let countCotizacion = 0;
+
+const initDataTableCotizacion = async () => {
+    if (dataTableIsInitializedCotizacion) {
+        dataTableCotizacion.destroy();
+    }
+
+
+    dataTableCotizacion = $("#tablacotizaciones").DataTable({
+        "destroy": true,
+        "lengthMenu": [[2, 4, 8, 16, 32, 100, 200, 500 - 1], [2, 4, 8, 16, 32, 100, 200, 500, "All"]],
+        "pageLength": 2,
+        "language": {
+            "select": {
+                "rows": {
+                    "_": "Usted selecciono %d filas",
+                    "0": "Haga click en una fila para seleccionarla",
+                    "1": "Solo 1 fila seleccionada"
+                },
+            },
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrada de _MAX_ registros)",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "No se encontraron registros coincidentes",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
+    });
+
+    $("#cotizar").click(function () {
+        dataTableCotizacion.$("input:checkbox:checked").each(function () {
+            $(this).closest('td').siblings().each(function () {
+                console.log($(this).text());
+            });
+        });
+    })
+
+    $(document).ready(function () {
+        $('.envio').on('click', function () {
+            var hermano = $(this).parent();
+            $("#tabla2").prepend("<tr>\
+                                            <td>"+ hermano.siblings("td:eq(1)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(0)").text() + "</td>\
+                                            <td>"+ hermano.siblings("td:eq(13)").text() + "</td>\
+                                                            </tr>")
+        });
+    })
+
+    dataTableIsInitializedCotizacion = true;
+
+}
+
+
+
+
+window.addEventListener("load", async () => {
+    await initDataTableCotizacion();
+})
+
+function refrescar() {
+    location.reload();
+}
+
+let listarCotizacion = async () => {
+
+    const clientes = Array.from(document.querySelectorAll("#tabla2 tbody tr"));
+    const productos = Array.from(document.querySelectorAll("#tablaproductos2 tbody tr"))
+
+    let contenidoTabla1 = "";
+
+    for (const rawCliente of clientes) {
+        const cliente = {
+            id: rawCliente.children[0].firstChild.data
+        }
+        for (const rawProducto of productos) {
+
+            const producto = {
+                id: rawProducto.children[0].firstChild.data,
+                cantidad: rawProducto.children[5].firstChild.data,
+            }
+
+            const contenidoFila1 = `
+                <tr>
+                <td>${cliente.id}</td>
+                <td></td>
+                <td>${producto.id}</td>
+                <td>${producto.cantidad}</td>
+                </tr>
+                `
+
+            contenidoTabla1 += contenidoFila1;
+        }
+    }
+
+    tabla_cotizaciones.innerHTML = contenidoTabla1;
+}
+
+
+
+
+
+
+
+const btnCrearCotizacion = document.getElementById("btnCrearCotizacion");
+
+btnCrearCotizacion.addEventListener("click", async function (event) {
+
+    const cotizaciones = Array.from(document.querySelectorAll("#tabla_cotizaciones tr"));
+
+    if (cotizaciones[0].classList.contains("odd")) {
+        return;
+    }
+    const cotizacion = {
+        "clienteId":parseInt( cotizaciones[0].children[0].firstChild.data),
+        "items": []
+    }
+    for (const rawCotizacion of cotizaciones) {
+        cotizacion.items.push(
+            {
+                "productoId": parseInt(  rawCotizacion.children[2].firstChild.data),
+                "cantidad": parseInt(rawCotizacion.children[3].firstChild.data)
+            }
+        );
+    }
+
+
+    
+    const peticion = await fetch("http://localhost:8080/cotizaciones",
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cotizacion)
+        })
+        const response = await peticion.json();
+     //alert("El envio fue:" + (peticion.status == 201 ? "Exitoso" : "Fallido"));
+     if(peticion.status == 201){
+        Swal.fire({
+            title: "!Bien hecho",
+            text: "Cotizacion Exitosa!",
+            icon: "success"
+          });
+    }else{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salio mal!",
+          });
+        } 
+})
+
+
+
+    
 
 
 

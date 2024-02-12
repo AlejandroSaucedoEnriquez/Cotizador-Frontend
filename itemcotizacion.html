@@ -10,88 +10,16 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
-  <!--<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap.min.css">-->
   <link rel="stylesheet" href="css/tabla.css">
   <link rel="stylesheet" href="css/cliente.css">
 </head>
 
 <body>
 
-
-<div class="content">
-  <h1>Crear Item Cotizacion</h1>
   <div class="container my-4 position-relative">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <a class="btn btn-primary my-4" onclick="refrescar();">Actualizar Tablas</a>
-        <table id="tablaproductos" class="table table-hover table-striped" style="width:100%">
-          <thead>
-            <tr>
-              <th colspan="14" class="table-primary">Productos Agregar Cantidad</th>
-            </tr>
-            <tr>
-              <th>#</th>
-              <th>Nombre</th>
-              <th>Sku</th>
-              <th>Stock</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-              <th>SubTotal</th>
-              <th>Descripcion</th>
-              <th>Categoria</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Calcular</th>
-              <th>Boton</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="tabla_productos">
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-
-  
-    <!--<div class="container my-4 position-relative">
-      <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <table id="tablaproductoscantidad" class="table table-hover table-striped" style="width:100%">
-            <thead>
-              <tr>
-                <th colspan="14" class="table-primary">Productos</th>
-              </tr>
-              <tr>
-                <th>Seleccionar</th>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Sku</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Cantidad</th>
-                <th>Descripcion</th>
-                <th>Categoria</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Boton</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="tabla_productoscantidad">
-            </tbody>
-          </table>
-  
-        </div>
-      </div>
-    </div>-->
-
-
-  <div class="container my-4 position-relative">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        
         <table id="tabla" class="table table-hover table-striped" style="width:100%">
           <thead>
             <tr>
@@ -116,41 +44,16 @@
     </div>
   </div>
 
-</div>
-
-  <div class="container my-4 position-relative">
+  <div class="container my-4 position-relative mover">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        
-  <table id="tabla2" class="table table-hover table-striped" style="width:100%">
-    <thead>
-      <tr>
-        <th colspan="14" class="table-primary">Cliente</th>
-      </tr>
-      <tr>
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Email</th>
-        <th>Telefono</th>
-        <th>Direccion</th>
-      </tr>
-    </thead>
-  </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="container my-4 position-relative">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-  <table id="tablaproductos2" class="table table-hover table-striped" style="width:100%">
-    <thead>
-      <tr>
-        <th colspan="14" class="table-primary">item cotizacion</th>
-      </tr>
-      <tr>
-        <th>#</th>
+        <table id="tablaproductos" class="table table-hover table-striped" style="width:100%">
+          <thead>
+            <tr>
+              <th colspan="18" class="table-primary">Productos Agregar Cantidad</th>
+            </tr>
+            <tr>
+              <th>#</th>
               <th>Nombre</th>
               <th>Sku</th>
               <th>Stock</th>
@@ -161,33 +64,166 @@
               <th>Categoria</th>
               <th>Marca</th>
               <th>Modelo</th>
-      </tr>
-    </thead>
-  </table>
-  <a href="tablaproductos.html" class="btn btn-primary btn-negro">
-    Regresar
-  </a>
-  
-    <button href="cotizacion.html" class="btn btn-primary formulario_btn" id="btncrearitemcotizacion" type="submit">
-      Crear Item Cotizacion
-    </button>
+              <th>Calcular</th>
+              <th>Obtener</th>
+              <th>Cantidad</th>
+              <th>Boton</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla_productos">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="imprimir">
+    <div class="container my-4 position-relative">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <table id="tabla2" class="table table-hover table-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th colspan="14" class="table-primary">Cliente</th>
+              </tr>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-4 position-relative">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <table id="tablaproductos2" class="table table-hover table-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th colspan="14" class="table-primary">item cotizacion</th>
+              </tr>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Sku</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>SubTotal</th>
+                <th>Descripcion</th>
+                <th>Categoria</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-  <!--<script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>-->
-  <script type="text/javascript" src="js/itemcotizacion.js"></script>
+  
+  <div class="container my-4 position-relative">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <table id="tablacotizaciones" class="table table-hover table-striped" style="width:100%">
+          <thead>
+            <tr>
+              <th colspan="14" class="table-primary">Cotizacion</th>
+            </tr>
+            <tr>
+              <th># Cliente</th>
+              <th>Items:</th>
+              <th># Producto</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody id="tabla_cotizaciones">
+          </tbody>
+        
+        </table>
+        <a href="tablaproductos.html" class="btn btn-primary btn-negro">
+          Regresar
+        </a>
+        <button class="btn btn-primary formulario_btn button" id="btnCrearCotizacion">
+          Crear Cotizacion
+        </button>
+        <button class="btn btn-primary btn-danger" type="button" onclick="genPDF()">PDF</button>
+        <div>
+        </div>
+      </div>
+   
 
-  
-  
-  
-  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" charset="utf8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>   
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" 
+integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+crossorigin="anonymous"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+/*function genPDF() {
+let pdf = new jsPDF('p', 'pt', 'a4');
+pdf.html(document.getElementById('imprimir'), {
+    callback: function (pdf) {
+        pdf.save('Cotizador.pdf');
+    },
+    x: 0,
+    y: 0,
+    width: 25
+});
+}*/
+
+
+//window.jsPDF = window.jspdf.jsPDF;
+
+function genPDF(){
+var doc = new jsPDF('p', 'pt', 'a4');
+var margin = 10;
+var scale = (doc.internal.pageSize.width - margin * 2) / document.getElementById('imprimir').scrollWidth;
+doc.html(document.getElementById('imprimir'),{
+x: margin,
+y: margin,
+html2canvas: {
+    scale: scale,
+},
+callback: function(pdf){
+  pdf.save('Cotizador.pdf');
+}
+});
+};
+</script>
+
+<script type="text/javascript" src="js/itemcotizacion.js?v=0.1"></script>
 </body>
 
 </html>

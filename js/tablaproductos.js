@@ -16,17 +16,6 @@ const initDataTableproductos = async () => {
     dataTableproductos = $("#tablaproductos").DataTable({
         "destroy": true,
         "select": true,
-        /*"columnDefs": [
-           {
-            "orderable": false,
-            "className": "select-checkbox",
-            "targets": 0
-            }
-       ],
-        "select": {
-            "style": "os",
-            "selector": "td:first-child"
-        },*/
         "lengthMenu": [ [2, 4, 8, 16, 32, 100, 200, 500 -1], [2, 4, 8, 16, 32, 100, 200, 500, "All"] ],
         "pageLength": 2,
         "language": {
@@ -61,10 +50,6 @@ const initDataTableproductos = async () => {
 window.addEventListener("load", async () => {
     await initDataTableproductos();
 })
-
-/*window.onload = function(){
-    listarProductos();
-}*/
 
 function refrescar() {
     location.reload();
@@ -231,7 +216,5 @@ $("#tabla").DataTable().rows().every(function () {
     if (data[0] == true) { // data[0] corresponde a la columna del checkbox
         valoresCheck.push(data[1]); // data[1] correspondería a la columna 'id'
     }
-    
-    //console.log(valoresCheck);
 });
 
