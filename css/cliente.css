@@ -317,7 +317,7 @@ img.logo{
 
 
 /* ----- -----  Mediaqueries ----- ----- */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
 	.formulario {
 		grid-template-columns: 1fr;
 	}
@@ -331,6 +331,25 @@ img.logo{
 	.formulario_btn {
 		width: 100%;
 	}
+img.my-4{
+  margin-left:15%!important;
+  width: 75%;
+}
+
+.formbold-form-title {
+  margin-bottom: 45px;
+  margin-left: -45%;
+}
+
+.formbold-form-title h2 {
+  margin-top: 35px;
+}
+
+.formulario {
+ margin-left:-58%;
+ margin-right: 23%;
+}
+
 }
 
 .btn-negro {

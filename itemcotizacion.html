@@ -10,6 +10,8 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.0.0/css/responsive.dataTables.css">
   <link rel="stylesheet" href="css/tabla.css">
   <link rel="stylesheet" href="css/cliente.css">
 </head>
@@ -20,7 +22,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <a class="btn btn-primary my-4" onclick="refrescar();">Actualizar Tablas</a>
-        <table id="tabla" class="table table-hover table-striped" style="width:100%">
+        <table id="tabla" class="table table-hover table-striped display responsive nowrap" style="width:100%">
           <thead>
             <tr>
               <th colspan="14" class="table-primary">Clientes</th>
@@ -47,7 +49,7 @@
   <div class="container my-4 position-relative mover">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <table id="tablaproductos" class="table table-hover table-striped" style="width:100%">
+        <table id="tablaproductos" class="table table-hover table-striped display responsive nowrap" style="width:100%">
           <thead>
             <tr>
               <th colspan="18" class="table-primary">Productos Agregar Cantidad</th>
@@ -82,7 +84,7 @@
     <div class="container my-4 position-relative">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <table id="tabla2" class="table table-hover table-striped" style="width:100%">
+          <table id="tabla2" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
               <tr>
                 <th colspan="14" class="table-primary">Cliente</th>
@@ -106,7 +108,7 @@
     <div class="container my-4 position-relative">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <table id="tablaproductos2" class="table table-hover table-striped" style="width:100%">
+          <table id="tablaproductos2" class="table table-hover table-striped display responsive nowrap" style="width:100%">
             <thead>
               <tr>
                 <th colspan="14" class="table-primary">item cotizacion</th>
@@ -138,7 +140,7 @@
   <div class="container my-4 position-relative">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <table id="tablacotizaciones" class="table table-hover table-striped" style="width:100%">
+        <table id="tablacotizaciones" class="table table-hover table-striped display responsive nowrap" style="width:100%">
           <thead>
             <tr>
               <th colspan="14" class="table-primary">Cotizacion</th>
@@ -182,7 +184,9 @@
       <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>   
+        src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.0.0/js/dataTables.responsive.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.0.0/js/responsive.dataTables.js"></script>   
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="js/itemcotizacion.js?v=0.1"></script>
 </body>

@@ -9,22 +9,18 @@ const tablacotizacionfinal = document.querySelector("#tablacotizacionfinal");
             var tbody = tabla.getElementsByTagName('tbody')[0];
             var totalElement = document.getElementById('total');
             var total = 0;
-            var row = tabla.insertRow();
-    
-    
+            
            
             tbody.innerHTML = '';
 
-
-            
          // Acceder al arreglo de objetos "items" dentro del objeto JSON
          var items = data.items;
         // Limpiar cualquier contenido previo
             // Iterar sobre los items y agregar filas a la tabla
             items.forEach(function(item) {
-              var fila = '<tr>';
+             var fila = '<tr>';
               fila += '<td>' + data.id + '</td>';
-              fila += '<td>' + data.id + '</td>';
+              fila += '<td>' + data.clienteId + '</td>';
               fila += '<td>' + item.producto.id + '</td>';
               fila += '<td>' + item.producto.nombre + '</td>';
               fila += '<td>' + item.producto.sku + '</td>';
