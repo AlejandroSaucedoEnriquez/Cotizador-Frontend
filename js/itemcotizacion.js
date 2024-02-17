@@ -446,6 +446,7 @@ btnCrearCotizacion.addEventListener("click", async function (event) {
             },
             body: JSON.stringify(cotizacion)
         })
+        
         const response = await peticion.json();
      //alert("El envio fue:" + (peticion.status == 201 ? "Exitoso" : "Fallido"));
      if(peticion.status == 201){
